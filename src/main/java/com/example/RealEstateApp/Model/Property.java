@@ -16,8 +16,18 @@ public class Property {
     private String owner_name;
     private String owner_contact;
 
+    private String booked;
+
     public int getProperty_id() {
         return property_id;
+    }
+
+    public String getbooked() {
+        return booked;
+    }
+
+    public void setbookedValue(String booked) {
+        this.booked = booked;
     }
 
     public String getProperty_type() {
@@ -71,13 +81,14 @@ public class Property {
         this.owner_contact = owner_contact;
     }
 
-    public Property(String property_type, String property_desc, String property_location, String property_prize, String owner_name, String owner_contact) {
+    public Property(String property_type, String property_desc, String property_location, String property_prize, String owner_name, String owner_contact, String booked) {
         this.property_type = property_type;
         this.property_desc = property_desc;
         this.property_location = property_location;
         this.property_prize = property_prize;
         this.owner_name = owner_name;
         this.owner_contact = owner_contact;
+        this.booked = booked;
     }
 
     @Override
@@ -90,6 +101,7 @@ public class Property {
                 ", property_prize='" + property_prize + '\'' +
                 ", owner_name='" + owner_name + '\'' +
                 ", owner_contact='" + owner_contact + '\'' +
+                ", booked='" + booked + '\'' +
                 '}';
     }
 }

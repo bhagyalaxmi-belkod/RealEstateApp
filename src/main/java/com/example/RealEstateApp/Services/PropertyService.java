@@ -6,16 +6,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PropertyService {
 
     @Autowired
-    PropertyRepo propertyRepo;
+    private PropertyRepo propertyRepo;
 
-    public void saveProperty(Property property) {
+    public Property saveProperty(Property property) {
 
-        propertyRepo.save(property);
+        return propertyRepo.save(property);
 
     }
 
@@ -25,15 +26,17 @@ public class PropertyService {
         return propertyRepo.findAll();
     }
 
-
-    public void deleteProp(Long id) {
-
-        propertyRepo.deleteById(id);
-
+    public List<Property> findByBookedProperties(){
+        return propertyRepo.findByBookedTrue();
     }
 
-    public Property getProp(Long id) {
-        return propertyRepo.getById(id);
+    public List<Property> findByAvailableProperties(){
+        return propertyRepo.findByBookedFalse();
+    }
+
+
+    public Optional<Property> getProp(Long id) {
+        return propertyRepo.findById(id);
 
     }
 }
